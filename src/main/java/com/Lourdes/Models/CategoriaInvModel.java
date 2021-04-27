@@ -16,10 +16,12 @@ public class CategoriaInvModel {
     public CategoriaInvModel() {
     }
 
-    public CategoriaInvModel(String nombreCategoria, boolean activo) {
-        this.nombreCategoria = nombreCategoria;
-        this.activo = activo;
+
+    public CategoriaInvModel(Integer idCategoria){
+
     }
+
+
 
     public Integer getIdCategoria() {
         return idCategoria;

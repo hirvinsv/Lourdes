@@ -1,24 +1,17 @@
 package com.Lourdes.Models;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class TipoInvModel {
 
     private Integer idTipoInv;
     private String nombreTipoInv;
-    private Boolean activo;
+    private Boolean Inactivo;
 
     public TipoInvModel() {
     }
 
-    public TipoInvModel(String nombreTipoInv, Boolean activo) {
+    public TipoInvModel(String nombreTipoInv, Boolean Inactivo) {
         this.nombreTipoInv = nombreTipoInv;
-        this.activo = activo;
+        this.Inactivo = Inactivo;
     }
 
     public Integer getIdTipoInv() {
@@ -37,12 +30,12 @@ public class TipoInvModel {
         this.nombreTipoInv = nombreTipoInv;
     }
 
-    public Boolean getActivo() {
-        return activo;
+    public Boolean getInactivo() {
+        return Inactivo;
     }
 
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
+    public void setInactivo(Boolean inactivo) {
+        this.Inactivo = inactivo;
     }
 
     @Override
@@ -50,7 +43,7 @@ public class TipoInvModel {
         return "TipoInvModel{" +
                 "idTipoInv=" + idTipoInv +
                 ", nombreTipoInv='" + nombreTipoInv + '\'' +
-                ", activo=" + activo +
+                ", activo=" + Inactivo +
                 '}';
     }
 }

@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "InventoryType")
@@ -17,14 +18,17 @@ public class TipoInvEntity implements Serializable {
     @Column(name = "InventoryType")
     private String nombreTipoInv;
     @Column(name = "Disable")
-    private Boolean activo;
+    private Boolean Inactivo;
+    @OneToMany(mappedBy = "tipoInvEntity")
+    List<InventarioEntity> listInventario;
+
 
     public TipoInvEntity() {
     }
 
-    public TipoInvEntity(String nombreTipoInv, Boolean activo) {
+    public TipoInvEntity(String nombreTipoInv, Boolean Inactivo) {
         this.nombreTipoInv = nombreTipoInv;
-        this.activo = activo;
+        this.Inactivo = Inactivo;
     }
 
     public Integer getIdTipoInv() {
@@ -43,12 +47,12 @@ public class TipoInvEntity implements Serializable {
         this.nombreTipoInv = nombreTipoInv;
     }
 
-    public Boolean getActivo() {
-        return activo;
+    public Boolean getInactivo() {
+        return Inactivo;
     }
 
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
+    public void setInactivo(Boolean activo) {
+        this.Inactivo = activo;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class TipoInvEntity implements Serializable {
         return "TipoInvEntity{" +
                 "idTipoInv=" + idTipoInv +
                 ", nombreTipoInv='" + nombreTipoInv + '\'' +
-                ", activo=" + activo +
+                ", activo=" + Inactivo +
                 '}';
     }
 }

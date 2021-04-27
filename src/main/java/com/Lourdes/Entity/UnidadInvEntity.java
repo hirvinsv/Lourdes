@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="InventoryUnit")
@@ -19,15 +20,17 @@ public class UnidadInvEntity implements Serializable {
     @Column(name = "Abbrev")
     private String abreviatura;
     @Column(name = "disable")
-    private boolean activo;
+    private boolean Inactivo;
+    @OneToMany(mappedBy = "unidadInvEntity")
+    List<InventarioEntity> listInventario;
 
     public UnidadInvEntity() {
     }
 
-    public UnidadInvEntity(String nombreUnidad, String abreviatura, boolean activo) {
+    public UnidadInvEntity(String nombreUnidad, String abreviatura, boolean Inactivo) {
         this.nombreUnidad = nombreUnidad;
         this.abreviatura = abreviatura;
-        this.activo = activo;
+        this.Inactivo = Inactivo;
     }
 
     public Integer getIdUnidadInv() {
@@ -54,12 +57,20 @@ public class UnidadInvEntity implements Serializable {
         this.abreviatura = abreviatura;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean isInactivo() {
+        return Inactivo;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setInactivo(boolean activo) {
+        this.Inactivo = activo;
+    }
+
+    public List<InventarioEntity> getListInventario() {
+        return listInventario;
+    }
+
+    public void setListInventario(List<InventarioEntity> listInventario) {
+        this.listInventario = listInventario;
     }
 
     @Override
@@ -68,7 +79,7 @@ public class UnidadInvEntity implements Serializable {
                 "idUnidadInv=" + idUnidadInv +
                 ", nombreUnidad='" + nombreUnidad + '\'' +
                 ", abreviatura='" + abreviatura + '\'' +
-                ", activo=" + activo +
+                ", activo=" + Inactivo +
                 '}';
     }
 }

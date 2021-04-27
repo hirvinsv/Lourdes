@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="InventoryCategories")
@@ -17,17 +18,30 @@ public class CategoriaInvEntity implements Serializable {
     @Column(name = "InventoryCategory")
     private String nombreCategoria;
     @Column(name ="Disable")
-    private boolean activo;
+    private boolean Desabilitado;
+    @OneToMany(mappedBy = "Categoria")
+    private List<InventarioEntity> listInventario;
+
+
 
     public CategoriaInvEntity(String nombreCategoria, boolean activo) {
-        this.idCategoria = idCategoria;
-        this.nombreCategoria = nombreCategoria;
-        this.activo = activo;
+         this.nombreCategoria = nombreCategoria;
+        this.Desabilitado = activo;
     }
 
+    public  CategoriaInvEntity(Integer Id){
+
+    }
     public CategoriaInvEntity() {
     }
 
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
 
     public String getNombreCategoria() {
         return nombreCategoria;
@@ -37,12 +51,20 @@ public class CategoriaInvEntity implements Serializable {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean isDesabilitado() {
+        return Desabilitado;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setDesabilitado(boolean activo) {
+        this.Desabilitado = activo;
+    }
+
+    public List<InventarioEntity> getListInventario() {
+        return listInventario;
+    }
+
+    public void setListInventario(List<InventarioEntity> listInventario) {
+        this.listInventario = listInventario;
     }
 
     @Override
@@ -50,7 +72,7 @@ public class CategoriaInvEntity implements Serializable {
         return "CategoriaInvEntity{" +
                 "idCategoria=" + idCategoria +
                 ", nombreCategoria='" + nombreCategoria + '\'' +
-                ", activo=" + activo +
+                ", activo=" + Desabilitado +
                 '}';
     }
 }

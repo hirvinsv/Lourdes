@@ -1,72 +1,34 @@
-package com.Lourdes.Entity;
+package com.Lourdes.Models;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.Lourdes.Entity.CategoriaInvEntity;
+import com.Lourdes.Entity.TipoInvEntity;
+import com.Lourdes.Entity.UnidadInvEntity;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
-@Table(name ="Inventory")
-public class InventarioEntity implements Serializable {
+public class InventarioModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY , generator="native")
-    @GenericGenerator(name="native",strategy="native")
-    @Column(name="InventoryId")
     private Integer idInventario;
-    @Column(name= "Disable")
-    private Boolean Inactivo;
-    @Column(name="ItemName")
+    private Boolean activo;
     private String nombreItem;
-    @Column(name="ItemCost")
     private BigDecimal costoItem;
-    @Column(name = "ItemsPerPack")
     private int itemPorPaquetes;
-    @Column(name = "PacksPerCase")
     private int paquetesPorCaja;
-    @Column(name = "UnitSKU")
     private String UnidadSku;
-    @Column(name = "PackSKu")
     private String PaqueteSku;
-    @Column(name = "CaseSKU")
     private String CajaSku;
-    @Column (name = "ReorderLevel")
     private float Reorden;
-    @Column(name = "MaximumQuantity")
     private float CantidadMaxima;
-    @Column(name = "TimeDateStamp")
     private Date FechaAuditoria;
-    @JoinColumn(name = "InventoryCategoryId", insertable = false, updatable = false)
-    @ManyToOne()
-    private CategoriaInvEntity Categoria;
-    @JoinColumn(name = "InventoryTypeId", insertable = false, updatable = false)
-    @ManyToOne
-    private TipoInvEntity tipoInvEntity;
-    @JoinColumn(name = "InventoryUnitId", insertable = false, updatable = false)
-    @ManyToOne
-    private UnidadInvEntity unidadInvEntity;
+    private Integer Categoria;
+    private Integer tipoInvEntity;
+    private Integer unidadInvEntity;
 
-    public InventarioEntity() {
+    public InventarioModel() {
+
     }
 
-    public InventarioEntity(Boolean Inactivo, String nombreItem, BigDecimal costoItem, int itemPorPaquetes, int paquetesPorCaja, String unidadSku, String paqueteSku, String cajaSku, float reorden, float cantidadMaxima, Date fechaAuditoria, CategoriaInvEntity categoria, TipoInvEntity tipoInvEntity, UnidadInvEntity unidadInvEntity) {
-        this.Inactivo = Inactivo;
-        this.nombreItem = nombreItem;
-        this.costoItem = costoItem;
-        this.itemPorPaquetes = itemPorPaquetes;
-        this.paquetesPorCaja = paquetesPorCaja;
-        UnidadSku = unidadSku;
-        PaqueteSku = paqueteSku;
-        CajaSku = cajaSku;
-        Reorden = reorden;
-        CantidadMaxima = cantidadMaxima;
-        FechaAuditoria = fechaAuditoria;
-        Categoria = categoria;
-        this.tipoInvEntity = tipoInvEntity;
-        this.unidadInvEntity = unidadInvEntity;
-    }
 
     public Integer getIdInventario() {
         return idInventario;
@@ -76,12 +38,12 @@ public class InventarioEntity implements Serializable {
         this.idInventario = idInventario;
     }
 
-    public Boolean getInactivo() {
-        return Inactivo;
+    public Boolean getActivo() {
+        return activo;
     }
 
-    public void setInactivo(Boolean activo) {
-        this.Inactivo = activo;
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     public String getNombreItem() {
@@ -164,35 +126,35 @@ public class InventarioEntity implements Serializable {
         FechaAuditoria = fechaAuditoria;
     }
 
-    public CategoriaInvEntity getCategoria() {
+    public Integer getCategoria() {
         return Categoria;
     }
 
-    public void setCategoria(CategoriaInvEntity categoria) {
+    public void setCategoria(Integer categoria) {
         Categoria = categoria;
     }
 
-    public TipoInvEntity getTipoInvEntity() {
+    public Integer getTipoInvEntity() {
         return tipoInvEntity;
     }
 
-    public void setTipoInvEntity(TipoInvEntity tipoInvEntity) {
+    public void setTipoInvEntity(Integer tipoInvEntity) {
         this.tipoInvEntity = tipoInvEntity;
     }
 
-    public UnidadInvEntity getUnidadInvEntity() {
+    public Integer getUnidadInvEntity() {
         return unidadInvEntity;
     }
 
-    public void setUnidadInvEntity(UnidadInvEntity unidadInvEntity) {
+    public void setUnidadInvEntity(Integer unidadInvEntity) {
         this.unidadInvEntity = unidadInvEntity;
     }
 
     @Override
     public String toString() {
-        return "InventarioEntity{" +
+        return "InventarioModel{" +
                 "idInventario=" + idInventario +
-                ", activo=" + Inactivo +
+                ", activo=" + activo +
                 ", nombreItem='" + nombreItem + '\'' +
                 ", costoItem=" + costoItem +
                 ", itemPorPaquetes=" + itemPorPaquetes +

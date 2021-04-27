@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${InvModel}">
+    <select th:field="*{Categoria}" id="categoria">
+        <option value="0">Nothing selected</option>
+        <option th:each="cat : ${categoriaList}"
+                th:value="${cat.getIdCategoria()}"
+                th:text="${cat.getNombreCategoria()}">
+        </option>
+    </select>
+    <select th:field="*{tipoInvEntity}" id="tipo">
+        <option value="0">Nothing selected</option>
+        <option th:each="type : ${TipoInvList}"
+                th:value="${type.getIdTipoInv()}"
+                th:text="${type.getNombreTipoInv()}">
+        </option>
+    </select>
+    <select th:field="*{unidadInvEntity}" id="Unidad">
+        <option value="0">Nothing selected</option>
+        <option th:each="unidad : ${UnidadInvList}"
+                th:value="${unidad.getIdUnidadInv()}"
+                th:text="${unidad.getNombreUnidad()}">
+        </option>
+    </select>
+</form>
+</body>
+</html>

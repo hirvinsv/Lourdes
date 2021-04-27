@@ -5,13 +5,12 @@ public class UnidadInvModel {
     private Integer idUnidadInv;
     private String nombreUnidad;
     private String abreviatura;
-    private boolean activo;
+    private boolean Inactivo;
 
-    public UnidadInvModel(Integer idUnidadInv, String nombreUnidad, String abreviatura, boolean activo) {
-        this.idUnidadInv = idUnidadInv;
+    public UnidadInvModel(String nombreUnidad, String abreviatura, boolean activo) {
         this.nombreUnidad = nombreUnidad;
         this.abreviatura = abreviatura;
-        this.activo = activo;
+        this.Inactivo = activo;
     }
 
     public UnidadInvModel() {
@@ -41,12 +40,12 @@ public class UnidadInvModel {
         this.abreviatura = abreviatura;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public boolean isInactivo() {
+        return Inactivo;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setInactivo(boolean inactivo) {
+        this.Inactivo = inactivo;
     }
 
     @Override
@@ -55,7 +54,7 @@ public class UnidadInvModel {
                 "idUnidadInv=" + idUnidadInv +
                 ", nombreUnidad='" + nombreUnidad + '\'' +
                 ", abreviatura='" + abreviatura + '\'' +
-                ", activo=" + activo +
+                ", activo=" + Inactivo +
                 '}';
     }
 }
